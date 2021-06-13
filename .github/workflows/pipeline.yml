@@ -1,0 +1,28 @@
+name: 'Test Pipeline'
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        shell: bash
+
+    strategy:
+      matrix:
+        node_dir: ["I am cool", "I am not cool"]
+        node: [10, 12]
+        
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    - name: Show environment v2
+      run: |
+        echo ${{ matrix.node_dir }}
+        echo ${{ matrix.node }}
