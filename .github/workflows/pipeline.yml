@@ -15,8 +15,11 @@ jobs:
 
     strategy:
       matrix:
-        node_dir: ["I am cool", "I am not cool"]
-        node: [10, 12]
+        include:
+        - node_dir: "I am cool"
+          node: ${{ secrets.SECRET_1 }}
+        - node_dir: "I am not cool"
+          node: ${{ secrets.SECRET_2 }}
         
     steps:
     - name: Checkout
