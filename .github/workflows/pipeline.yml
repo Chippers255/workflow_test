@@ -17,22 +17,15 @@ jobs:
       matrix:
         include:
         - node_dir: "I am cool"
-          node: "dev"
+          node: SECRET_1
         - node_dir: "I am not cool"
-          node: "prod"
+          node: SECRET_2
         
     steps:
     - name: Checkout
       uses: actions/checkout@v2
       
-    - name: Show Dev
-      if: ${{ matrix.node_dir }} == "dev"
+    - name: Show Information
       run: |
         echo ${{ matrix.node_dir }}
-        echo ${{ secrets.SECRET_1 }}
-        
-    - name: Show Prod
-      if: ${{ matrix.node_dir }} == "prod"
-      run: |
-        echo ${{ matrix.node_dir }}
-        echo ${{ secrets.SECRET_2 }}
+        echo ${{ secrets[matrix.node] }}
