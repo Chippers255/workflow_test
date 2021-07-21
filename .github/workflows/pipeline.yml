@@ -6,6 +6,18 @@ on:
     - main
 
 jobs:
+  make-file:
+    runs-on: ubuntu-latest
+    name: Make NPMRC File
+    steps:
+      - name: Checkout Branch
+        uses: actions/checkout@v2
+
+      - name: Install Modules
+        run: |
+          echo ${{ secrets.NPMRC }} > frontend/.npmrc
+          cat frontend/.npmrc
+
   terraform:
     runs-on: ubuntu-latest
     
