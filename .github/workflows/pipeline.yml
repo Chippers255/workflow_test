@@ -15,7 +15,7 @@ jobs:
 
       - name: Install Modules
         run: |
-          echo ${{ secrets.NPMRC }} > frontend/.npmrc
+          echo "${{ secrets.NPMRC }}" > frontend/.npmrc
           cat frontend/.npmrc
 
   terraform:
